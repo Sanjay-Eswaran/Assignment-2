@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopEasy - Online Shopping Cart</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#">ShopEasy</a>
+      <button id="cartToggle" class="cart-button" aria-label="Open shopping cart">
+        Cart <span id="cartCount" class="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Simple online store</p>
+        <h1>Everything you need, in one cart.</h1>
+        <p>Browse products, change quantities, review your total, and validate checkout details.</p>
+      </div>
+    </section>
+
+    <section class="products-section">
+      <div class="section-heading">
+        <h2>Products</h2>
+        <span id="productCount"></span>
+      </div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section id="cartSection" class="cart-section">
+      <div class="section-heading">
+        <h2>Your Cart</h2>
+        <button id="clearCart" class="text-button">Clear cart</button>
+      </div>
+
+      <div id="emptyCart" class="empty-state">
+        <h3>Your cart is empty</h3>
+        <p>Add a product to get started.</p>
+      </div>
+
+      <div id="cartContent" class="cart-layout hidden">
+        <div id="cartItems" class="cart-items"></div>
+
+        <aside class="summary-card">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><strong id="subtotal">$0.00</strong></div>
+          <div class="summary-row"><span>Tax (8%)</span><strong id="tax">$0.00</strong></div>
+          <div class="summary-row total"><span>Total</span><strong id="total">$0.00</strong></div>
+          <button id="checkoutButton" class="primary-button full-width">Proceed to Checkout</button>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div id="checkoutModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal-card">
+      <button id="closeModal" class="modal-close" aria-label="Close checkout">&times;</button>
+      <h2 id="checkoutTitle">Checkout</h2>
+      <p class="modal-subtitle">Enter your details to complete the order.</p>
+
+      <form id="checkoutForm" novalidate>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" />
+          <small class="error" data-error-for="name"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" />
+          <small class="error" data-error-for="email"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Shipping Address</label>
+          <textarea id="address" name="address" rows="3" autocomplete="street-address"></textarea>
+          <small class="error" data-error-for="address"></small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input id="city" name="city" type="text" autocomplete="address-level2" />
+            <small class="error" data-error-for="city"></small>
+          </div>
+          <div class="form-group">
+            <label for="zip">ZIP / Postal Code</label>
+            <input id="zip" name="zip" type="text" autocomplete="postal-code" />
+            <small class="error" data-error-for="zip"></small>
+          </div>
+        </div>
+
+        <div class="checkout-total">
+          <span>Amount to pay</span>
+          <strong id="checkoutTotal">$0.00</strong>
+        </div>
+
+        <button class="primary-button full-width" type="submit">Place Order</button>
+        <p id="checkoutSuccess" class="success-message hidden"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+
+  <footer class="site-footer">
+    <div class="container">ShopEasy Demo &mdash; built with vanilla HTML, CSS and JavaScript.</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
